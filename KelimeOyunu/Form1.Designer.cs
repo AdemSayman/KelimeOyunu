@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(girisYapma));
             label1 = new Label();
             textBox1 = new TextBox();
             label2 = new Label();
@@ -35,84 +36,146 @@
             textBox2 = new TextBox();
             button1 = new Button();
             button2 = new Button();
+            panel2 = new Panel();
+            panel3 = new Panel();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Bahnschrift SemiBold Condensed", 22.2F, FontStyle.Bold);
-            label1.Location = new Point(379, 119);
+            label1.Font = new Font("Bahnschrift SemiCondensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            label1.Location = new Point(124, 129);
             label1.Name = "label1";
-            label1.Size = new Size(342, 45);
+            label1.Size = new Size(151, 36);
             label1.TabIndex = 0;
-            label1.Text = "Kelime Öğrene Hoşgeldiniz";
+            label1.Text = "Hoşgeldiniz";
+            label1.Click += label1_Click;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(431, 233);
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            textBox1.Location = new Point(55, 236);
+            textBox1.Multiline = true;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(335, 27);
+            textBox1.Size = new Size(272, 39);
             textBox1.TabIndex = 1;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(333, 240);
+            label2.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            label2.Location = new Point(55, 211);
             label2.Name = "label2";
-            label2.Size = new Size(92, 20);
+            label2.Size = new Size(97, 22);
             label2.TabIndex = 2;
             label2.Text = "Kullanıcı Adı";
+            label2.Click += label2_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(333, 273);
+            label3.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            label3.Location = new Point(55, 291);
             label3.Name = "label3";
-            label3.Size = new Size(39, 20);
+            label3.Size = new Size(42, 22);
             label3.TabIndex = 4;
             label3.Text = "Şifre";
+            label3.Click += label3_Click;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(431, 266);
+            textBox2.BorderStyle = BorderStyle.FixedSingle;
+            textBox2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            textBox2.Location = new Point(55, 314);
+            textBox2.Multiline = true;
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(335, 27);
+            textBox2.PasswordChar = '*';
+            textBox2.Size = new Size(272, 39);
             textBox2.TabIndex = 3;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // button1
             // 
-            button1.Location = new Point(459, 377);
+            button1.BackColor = Color.Gainsboro;
+            button1.FlatAppearance.BorderColor = Color.White;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseOverBackColor = Color.Silver;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            button1.Location = new Point(55, 390);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(272, 40);
             button1.TabIndex = 5;
             button1.Text = "Giriş Yap";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(575, 377);
+            button2.BackColor = Color.Gainsboro;
+            button2.FlatAppearance.BorderColor = Color.White;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.MouseOverBackColor = Color.Silver;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            button2.Location = new Point(55, 441);
             button2.Name = "button2";
-            button2.Size = new Size(94, 29);
+            button2.Size = new Size(272, 40);
             button2.TabIndex = 6;
             button2.Text = "Kayıt Ol";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.LightGray;
+            panel2.Location = new Point(1, 177);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(149, 10);
+            panel2.TabIndex = 8;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.LightGray;
+            panel3.Location = new Point(224, 177);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(149, 10);
+            panel3.TabIndex = 9;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(197, 104);
+            pictureBox1.TabIndex = 10;
+            pictureBox1.TabStop = false;
             // 
             // girisYapma
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1086, 554);
+            BackColor = Color.White;
+            ClientSize = new Size(373, 528);
+            Controls.Add(pictureBox1);
+            Controls.Add(label1);
+            Controls.Add(panel3);
+            Controls.Add(panel2);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label3);
             Controls.Add(textBox2);
             Controls.Add(label2);
             Controls.Add(textBox1);
-            Controls.Add(label1);
             Name = "girisYapma";
-            Text = "Kelime Öğreenn";
+            Text = "f";
+            Load += girisYapma_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -126,5 +189,8 @@
         private TextBox textBox2;
         private Button button1;
         private Button button2;
+        private Panel panel2;
+        private Panel panel3;
+        private PictureBox pictureBox1;
     }
 }
