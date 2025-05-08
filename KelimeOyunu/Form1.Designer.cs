@@ -66,10 +66,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            label2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
             label2.Location = new Point(55, 211);
             label2.Name = "label2";
-            label2.Size = new Size(97, 22);
+            label2.Size = new Size(114, 20);
             label2.TabIndex = 2;
             label2.Text = "Kullanıcı Adı";
             label2.Click += label2_Click;
@@ -77,10 +77,10 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            label3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
             label3.Location = new Point(55, 291);
             label3.Name = "label3";
-            label3.Size = new Size(42, 22);
+            label3.Size = new Size(49, 20);
             label3.TabIndex = 4;
             label3.Text = "Şifre";
             label3.Click += label3_Click;
@@ -104,7 +104,7 @@
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatAppearance.MouseOverBackColor = Color.Silver;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            button1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
             button1.Location = new Point(55, 390);
             button1.Name = "button1";
             button1.Size = new Size(272, 40);
@@ -120,7 +120,7 @@
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatAppearance.MouseOverBackColor = Color.Silver;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Arial Narrow", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            button2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
             button2.Location = new Point(55, 441);
             button2.Name = "button2";
             button2.Size = new Size(272, 40);

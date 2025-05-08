@@ -12,9 +12,18 @@ namespace KelimeOyunu
 {
     public partial class Form3 : Form
     {
-        public Form3()
+        Form2 form2Ref;
+
+        public Form3(Form2 gelenForm)
         {
+            form2Ref = gelenForm;
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            form2Ref.Show();
+            this.Close();
         }
     }
 }
