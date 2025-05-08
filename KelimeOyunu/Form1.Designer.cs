@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(girisYapma));
             label1 = new Label();
             textBox1 = new TextBox();
             label2 = new Label();
@@ -48,9 +47,9 @@
             label1.Font = new Font("Bahnschrift SemiCondensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 162);
             label1.Location = new Point(124, 129);
             label1.Name = "label1";
-            label1.Size = new Size(151, 36);
+            label1.Size = new Size(160, 36);
             label1.TabIndex = 0;
-            label1.Text = "Hoşgeldiniz";
+            label1.Text = "Hoş Geldiniz";
             label1.Click += label1_Click;
             // 
             // textBox1
@@ -100,7 +99,7 @@
             // 
             // button1
             // 
-            button1.BackColor = Color.Gainsboro;
+            button1.BackColor = Color.PaleTurquoise;
             button1.FlatAppearance.BorderColor = Color.White;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatAppearance.MouseOverBackColor = Color.Silver;
@@ -116,7 +115,7 @@
             // 
             // button2
             // 
-            button2.BackColor = Color.Gainsboro;
+            button2.BackColor = Color.PaleTurquoise;
             button2.FlatAppearance.BorderColor = Color.White;
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatAppearance.MouseOverBackColor = Color.Silver;
@@ -132,7 +131,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.LightGray;
+            panel2.BackColor = Color.Lavender;
             panel2.Location = new Point(1, 177);
             panel2.Name = "panel2";
             panel2.Size = new Size(149, 10);
@@ -140,7 +139,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = Color.LightGray;
+            panel3.BackColor = Color.Lavender;
             panel3.Location = new Point(224, 177);
             panel3.Name = "panel3";
             panel3.Size = new Size(149, 10);
@@ -148,11 +147,11 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImage = Properties.Resources.tatlı_çocuklu_logo;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Location = new Point(1, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(197, 104);
+            pictureBox1.Size = new Size(151, 103);
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
             // 
@@ -160,7 +159,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
+            BackColor = Color.Ivory;
             ClientSize = new Size(373, 528);
             Controls.Add(pictureBox1);
             Controls.Add(label1);

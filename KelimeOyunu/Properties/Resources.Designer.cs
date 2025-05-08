@@ -69,5 +69,15 @@ namespace KelimeOyunu.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tatlı_çocuklu_logo {
+            get {
+                object obj = ResourceManager.GetObject("tatlı çocuklu logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
