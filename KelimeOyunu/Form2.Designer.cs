@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             panel1 = new Panel();
+            ayarlar = new Button();
             button5 = new Button();
             button7 = new Button();
             button1 = new Button();
@@ -51,7 +53,6 @@
             label2 = new Label();
             EngTextBox = new TextBox();
             label1 = new Label();
-            ayarlar = new Button();
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -72,6 +73,25 @@
             panel1.Size = new Size(230, 494);
             panel1.TabIndex = 0;
             // 
+            // ayarlar
+            // 
+            ayarlar.BackColor = Color.Lavender;
+            ayarlar.FlatAppearance.BorderColor = Color.White;
+            ayarlar.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            ayarlar.FlatAppearance.MouseOverBackColor = Color.White;
+            ayarlar.FlatStyle = FlatStyle.Flat;
+            ayarlar.Font = new Font("Bahnschrift SemiBold Condensed", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            ayarlar.ForeColor = SystemColors.Desktop;
+            ayarlar.Image = (Image)resources.GetObject("ayarlar.Image");
+            ayarlar.ImageAlign = ContentAlignment.MiddleLeft;
+            ayarlar.Location = new Point(25, 291);
+            ayarlar.Name = "ayarlar";
+            ayarlar.Size = new Size(187, 50);
+            ayarlar.TabIndex = 8;
+            ayarlar.Text = "Ayarlar";
+            ayarlar.UseVisualStyleBackColor = false;
+            ayarlar.Click += ayarlar_Click;
+            // 
             // button5
             // 
             button5.BackColor = Color.Lavender;
@@ -81,12 +101,17 @@
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Bahnschrift SemiBold Condensed", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
             button5.ForeColor = SystemColors.Desktop;
+            button5.Image = Properties.Resources.çıkış___1_;
+            button5.ImageAlign = ContentAlignment.MiddleLeft;
             button5.Location = new Point(25, 414);
             button5.Name = "button5";
             button5.Size = new Size(187, 50);
             button5.TabIndex = 4;
-            button5.Text = "Çıkış";
+            button5.Text = "     Çıkış";
+            button5.TextAlign = ContentAlignment.MiddleRight;
+            button5.TextImageRelation = TextImageRelation.ImageBeforeText;
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // button7
             // 
@@ -97,12 +122,15 @@
             button7.FlatStyle = FlatStyle.Flat;
             button7.Font = new Font("Bahnschrift SemiBold Condensed", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
             button7.ForeColor = SystemColors.Desktop;
+            button7.Image = (Image)resources.GetObject("button7.Image");
+            button7.ImageAlign = ContentAlignment.MiddleLeft;
             button7.Location = new Point(25, 235);
             button7.Name = "button7";
             button7.Size = new Size(187, 50);
             button7.TabIndex = 7;
-            button7.Text = "Hikaye Oluştur";
+            button7.Text = "    Hikaye Oluştur";
             button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
             // 
             // button1
             // 
@@ -113,12 +141,15 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Bahnschrift SemiBold Condensed", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
             button1.ForeColor = SystemColors.Desktop;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
             button1.Location = new Point(25, 179);
             button1.Name = "button1";
             button1.Size = new Size(187, 50);
             button1.TabIndex = 4;
-            button1.Text = "Wordly";
+            button1.Text = "Wordle";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
             // 
             // button6
             // 
@@ -129,11 +160,13 @@
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Bahnschrift SemiBold Condensed", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
             button6.ForeColor = SystemColors.Desktop;
+            button6.Image = Properties.Resources.ekle;
+            button6.ImageAlign = ContentAlignment.MiddleLeft;
             button6.Location = new Point(25, 11);
             button6.Name = "button6";
             button6.Size = new Size(187, 50);
             button6.TabIndex = 6;
-            button6.Text = "Kelime Ekle";
+            button6.Text = "   Kelime Ekle";
             button6.UseVisualStyleBackColor = false;
             button6.Click += button6_Click;
             // 
@@ -146,12 +179,15 @@
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Bahnschrift SemiBold Condensed", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
             button3.ForeColor = SystemColors.Desktop;
+            button3.Image = (Image)resources.GetObject("button3.Image");
+            button3.ImageAlign = ContentAlignment.MiddleLeft;
             button3.Location = new Point(25, 123);
             button3.Name = "button3";
             button3.Size = new Size(187, 50);
             button3.TabIndex = 3;
             button3.Text = "İlerleme";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -162,11 +198,13 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Bahnschrift SemiBold Condensed", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
             button2.ForeColor = SystemColors.Desktop;
+            button2.Image = Properties.Resources.çalış;
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
             button2.Location = new Point(25, 66);
             button2.Name = "button2";
             button2.Size = new Size(187, 50);
             button2.TabIndex = 2;
-            button2.Text = "Kelime Çalış";
+            button2.Text = "    Kelime Çalış";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
@@ -187,9 +225,11 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Visible = false;
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = Color.Ivory;
             groupBox2.Controls.Add(buttonD);
             groupBox2.Controls.Add(buttonC);
             groupBox2.Controls.Add(buttonB);
@@ -202,6 +242,7 @@
             groupBox2.TabIndex = 8;
             groupBox2.TabStop = false;
             groupBox2.Visible = false;
+            groupBox2.Enter += groupBox2_Enter;
             // 
             // buttonD
             // 
@@ -245,17 +286,18 @@
             // 
             // panel2
             // 
-            panel2.BackColor = SystemColors.ButtonShadow;
-            panel2.Location = new Point(149, 135);
+            panel2.BackColor = Color.Lavender;
+            panel2.Location = new Point(144, 129);
             panel2.Name = "panel2";
             panel2.Size = new Size(305, 10);
             panel2.TabIndex = 1;
+            panel2.Paint += panel2_Paint;
             // 
             // labelKelime
             // 
             labelKelime.AutoSize = true;
             labelKelime.Font = new Font("Bahnschrift", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            labelKelime.Location = new Point(255, 104);
+            labelKelime.Location = new Point(264, 98);
             labelKelime.Name = "labelKelime";
             labelKelime.Size = new Size(76, 28);
             labelKelime.TabIndex = 0;
@@ -331,23 +373,6 @@
             label1.Size = new Size(135, 28);
             label1.TabIndex = 0;
             label1.Text = "Kelime Ekle";
-            // 
-            // ayarlar
-            // 
-            ayarlar.BackColor = Color.Lavender;
-            ayarlar.FlatAppearance.BorderColor = Color.White;
-            ayarlar.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            ayarlar.FlatAppearance.MouseOverBackColor = Color.White;
-            ayarlar.FlatStyle = FlatStyle.Flat;
-            ayarlar.Font = new Font("Bahnschrift SemiBold Condensed", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            ayarlar.ForeColor = SystemColors.Desktop;
-            ayarlar.Location = new Point(25, 291);
-            ayarlar.Name = "ayarlar";
-            ayarlar.Size = new Size(187, 50);
-            ayarlar.TabIndex = 8;
-            ayarlar.Text = "Ayarlar";
-            ayarlar.UseVisualStyleBackColor = false;
-            ayarlar.Click += ayarlar_Click;
             // 
             // Form2
             // 

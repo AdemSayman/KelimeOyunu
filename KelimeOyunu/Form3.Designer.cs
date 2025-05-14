@@ -39,7 +39,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Bahnschrift Condensed", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            label1.Location = new Point(178, 83);
+            label1.Location = new Point(186, 83);
             label1.Name = "label1";
             label1.Size = new Size(104, 41);
             label1.TabIndex = 0;
@@ -65,20 +65,21 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(224, 224, 224);
-            panel1.Location = new Point(119, 127);
+            panel1.BackColor = Color.Lavender;
+            panel1.Location = new Point(123, 127);
             panel1.Name = "panel1";
             panel1.Size = new Size(212, 10);
             panel1.TabIndex = 3;
             // 
             // button1
             // 
-            button1.Location = new Point(27, 409);
+            button1.BackColor = Color.Lavender;
+            button1.Location = new Point(27, 364);
             button1.Name = "button1";
             button1.Size = new Size(94, 29);
             button1.TabIndex = 4;
             button1.Text = "Anasayfa";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // Form3
