@@ -6,7 +6,7 @@ namespace KelimeOyunu
 {
     public partial class girisYapma : Form
     {
-        Form2 form2 = new Form2();
+        
 
 
         public girisYapma()
@@ -44,6 +44,7 @@ namespace KelimeOyunu
                     if (sonuc > 0)
                     {
                         MessageBox.Show("Giriþ baþarýlý!");
+                        Form2 form2 = new Form2(10);
                         form2.Show();
                         this.Hide();
                     }

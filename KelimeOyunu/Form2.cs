@@ -5,24 +5,36 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Button = System.Windows.Forms.Button;
+using KelimeOyunu;
+
+
 
 namespace KelimeOyunu
 {
 
     public partial class Form2 : Form
     {
+
+        int dogruSayac = 0;
+        int yanlisSayac = 0;
         string dogruCevap = "";
+        int hedefSoruSayisi = 10; // default
+        int mevcutSoruSayaci = 0;
         string connectionString = "Data Source=DESKTOP-A5JV8RA\\SQLEXPRESS;Initial Catalog=KelimeOyun_db;Integrated Security=True;TrustServerCertificate=True";
-        public Form2()
+        public Form2(int soruSayisi)
         {
+            hedefSoruSayisi = soruSayisi;
             InitializeComponent();
         }
+      
 
-        
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -30,8 +42,10 @@ namespace KelimeOyunu
 
         private void button6_Click(object sender, EventArgs e)
         {
+            tabControl1.SelectedTab= tabPage1;
             groupBox1.Visible = true;
             groupBox2.Visible = false;
+            groupBoxAyarlar.Visible = false;
 
         }
 
@@ -40,6 +54,7 @@ namespace KelimeOyunu
             string ingilizceKelime = EngTextBox.Text.Trim();
             string turkceKelime = TurTextBox.Text.Trim();
             string resimYolu = ImageTextBox.Text.Trim();
+            string OrnekCumle = richTextBox1.Text.Trim();
 
             string connectionString = "Data Source=DESKTOP-A5JV8RA\\SQLEXPRESS;Initial Catalog=KelimeOyun_db;Integrated Security=True;TrustServerCertificate=True";
 
@@ -62,18 +77,23 @@ namespace KelimeOyunu
                 }
 
                 // Kullanıcıyı ekle
-                string ekleSorgu = "INSERT INTO kelimeler (EngWordName, TurWordName,Picture) VALUES (@kadi, @turu , @pic)";
+                string ekleSorgu = "INSERT INTO kelimeler (EngWordName, TurWordName,Picture,OrnekCumle) VALUES (@kadi, @turu , @pic, @ornek)";
                 using (SqlCommand cmdEkle = new SqlCommand(ekleSorgu, conn))
                 {
                     cmdEkle.Parameters.AddWithValue("@kadi", ingilizceKelime);
                     cmdEkle.Parameters.AddWithValue("@turu", turkceKelime);
                     cmdEkle.Parameters.AddWithValue("@pic", resimYolu);
+                    cmdEkle.Parameters.AddWithValue("@ornek", OrnekCumle);
 
                     int sonuc = cmdEkle.ExecuteNonQuery();
 
                     if (sonuc > 0)
                     {
                         MessageBox.Show("Kayıt başarılı!");
+                        EngTextBox.Text = "";
+                        TurTextBox.Text = "";
+                        ImageTextBox.Text = "";
+                        richTextBox1.Text = "";
                     }
                     else
                     {
@@ -85,9 +105,29 @@ namespace KelimeOyunu
 
         private void button2_Click(object sender, EventArgs e)
         {
-            groupBox2.Visible = true;
-            groupBox1.Visible = true;
-            soruSorma();
+
+            if (comboBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Lütfen çalışılacak kelime sayısını seç.");
+                return;
+            }
+            else
+            {
+                hedefSoruSayisi = int.Parse(comboBox1.SelectedItem.ToString()); // Seçilen sayı hedefe atanıyor
+
+                tabControl1.SelectedTab = tabPage2;
+                groupBox2.Visible = true;
+                groupBox1.Visible = false;
+                groupBoxAyarlar.Visible = false;
+                progressBarSorular.Minimum = 0;
+                progressBarSorular.Maximum = hedefSoruSayisi;
+                progressBarSorular.Value = 0;
+
+                mevcutSoruSayaci = 0; // Sayacı sıfırla ki düzgün saysın
+                YeniSoruGetir(); // Soru başlat
+            }
+
+
         }
         public void soruSorma()
         {
@@ -128,11 +168,11 @@ namespace KelimeOyunu
                 }
             }
 
-            // Karıştır (shuffle)
+            // Karıştır 
             Random rnd = new Random();
             secenekler = secenekler.OrderBy(x => rnd.Next()).ToList();
 
-            // Label’a İngilizce kelimeyi yaz
+            // Label İngilizce kelimeyi yaz
             labelKelime.Text = ingilizceKelime;
 
             // Butonlara şıkları yerleştir
@@ -164,6 +204,19 @@ namespace KelimeOyunu
         }
         void YeniSoruGetir()
         {
+            if (mevcutSoruSayaci >= hedefSoruSayisi)
+            {
+                string mesaj = $"Test tamamlandı!\nDoğru sayısı: {dogruSayac}\nYanlış sayısı: {yanlisSayac}";
+                MessageBox.Show(mesaj, "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+                return;
+            }
+
+            // burada veritabanından rastgele kelime çekme işlemi olacak
+            mevcutSoruSayaci++;
+            progressBarSorular.Value = mevcutSoruSayaci;
+            labelSoruSayac.Text = $"Soru {mevcutSoruSayaci}/{hedefSoruSayisi}";
+
             string ingilizceKelime = "";
             List<string> secenekler = new List<string>();
 
@@ -171,7 +224,7 @@ namespace KelimeOyunu
             {
                 conn.Open();
 
-                // 1 tane rastgele kelime al
+                
                 string rastgeleKelimeSorgu = "SELECT TOP 1 * FROM kelimeler ORDER BY NEWID()";
                 using (SqlCommand cmd = new SqlCommand(rastgeleKelimeSorgu, conn))
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -184,7 +237,7 @@ namespace KelimeOyunu
                     }
                 }
 
-                // 3 yanlış cevap al
+                
                 string yanlislarSorgu = "SELECT TOP 3 TurWordName FROM kelimeler WHERE TurWordName != @dogru ORDER BY NEWID()";
                 using (SqlCommand cmd2 = new SqlCommand(yanlislarSorgu, conn))
                 {
@@ -199,11 +252,9 @@ namespace KelimeOyunu
                 }
             }
 
-            // Şıkları karıştır
             Random rnd = new Random();
             secenekler = secenekler.OrderBy(x => rnd.Next()).ToList();
 
-            // Ekrana bas
             labelKelime.Text = ingilizceKelime;
             buttonA.Text = secenekler[0];
             buttonB.Text = secenekler[1];
@@ -215,16 +266,53 @@ namespace KelimeOyunu
         {
             Button tiklananButon = sender as Button;
 
-            // Doğru mu yanlış mı kontrol et ve renk ver
+            // Doğru mu yanlış mı 
             if (tiklananButon.Text == dogruCevap)
             {
                 tiklananButon.BackColor = Color.Green;
+                dogruSayac++;
+
+                Veritabanı.GuncelleKelimeIstatistik(labelKelime.Text);
+
+                //using (SqlConnection conn = new SqlConnection(connectionString))
+                //{
+                //    conn.Open();
+
+                //    // Kelimenin istatistikte olup olmadığını kontrol et
+                //    string kontrolQuery = "SELECT COUNT(*) FROM KelimeIstatistik WHERE Kelime = @kelime";
+                //    using (SqlCommand cmdKontrol = new SqlCommand(kontrolQuery, conn))
+                //    {
+                //        cmdKontrol.Parameters.AddWithValue("@kelime", labelKelime.Text);
+                //        int kayitVarMi = (int)cmdKontrol.ExecuteScalar();
+
+                //        if (kayitVarMi > 0)
+                //        {
+                //            // Varsa, DogruSayac değerini artır
+                //            string updateQuery = "UPDATE KelimeIstatistik SET DogruSayac = DogruSayac + 1 WHERE Kelime = @kelime";
+                //            using (SqlCommand cmdUpdate = new SqlCommand(updateQuery, conn))
+                //            {
+                //                cmdUpdate.Parameters.AddWithValue("@kelime", labelKelime.Text);
+                //                cmdUpdate.ExecuteNonQuery();
+                //            }
+                //        }
+                //        else
+                //        {
+                //            // Yoksa, yeni kayıt olarak ekle
+                //            string insertQuery = "INSERT INTO KelimeIstatistik (Kelime, DogruSayac) VALUES (@kelime, 1)";
+                //            using (SqlCommand cmdInsert = new SqlCommand(insertQuery, conn))
+                //            {
+                //                cmdInsert.Parameters.AddWithValue("@kelime", labelKelime.Text);
+                //                cmdInsert.ExecuteNonQuery();
+                //            }
+                //        }
+                //    }
+                //}
             }
             else
             {
                 tiklananButon.BackColor = Color.Red;
-
-                // Doğru olanı da yeşil yapalım
+                yanlisSayac++;
+                // yeşil yapalım
                 foreach (var btn in new[] { buttonA, buttonB, buttonC, buttonD })
                 {
                     if (btn.Text == dogruCevap)
@@ -235,11 +323,11 @@ namespace KelimeOyunu
                 }
             }
 
-            // 1 saniye bekle, sonra yeni soru gelsin
+            
             await Task.Delay(1000);
             YeniSoruGetir();
 
-            // Buton renklerini sıfırla
+            
             foreach (var btn in new[] { buttonA, buttonB, buttonC, buttonD })
             {
                 btn.BackColor = SystemColors.Control;
@@ -254,14 +342,58 @@ namespace KelimeOyunu
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
         }
 
         private void ayarlar_Click(object sender, EventArgs e)
         {
-            Form3 frm3 = new Form3(this);
-            frm3.Show();
+            tabControl1.SelectedTab = tabPage3;
+            groupBoxAyarlar.Visible = true;
+            groupBox2.Visible = false;
+            groupBox1.Visible = false;
+          
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form3 istatistikForm = new Form3();
+            istatistikForm.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Form4 form4 = new Form4();
+            form4.Show();
             this.Hide();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            // girisYapma
+            girisYapma girisForm = new girisYapma();
+            girisForm.Show();
+        }
+       
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

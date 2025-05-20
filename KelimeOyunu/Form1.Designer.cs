@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(girisYapma));
             label1 = new Label();
             textBox1 = new TextBox();
             label2 = new Label();
@@ -45,7 +46,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Bahnschrift SemiCondensed", 18F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            label1.Location = new Point(124, 129);
+            label1.Location = new Point(110, 129);
             label1.Name = "label1";
             label1.Size = new Size(160, 36);
             label1.TabIndex = 0;
@@ -147,7 +148,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackgroundImage = Properties.Resources.tatlı_çocuklu_logo;
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Location = new Point(1, 12);
             pictureBox1.Name = "pictureBox1";

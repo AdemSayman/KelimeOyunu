@@ -7,23 +7,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace KelimeOyunu
 {
     public partial class Form3 : Form
     {
-        Form2 form2Ref;
+        
 
-        public Form3(Form2 gelenForm)
+        public Form3()
         {
-            form2Ref = gelenForm;
             InitializeComponent();
+            YukleIstatistikler();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            form2Ref.Show();
-            this.Close();
+            
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+
+        }
+        private void YukleIstatistikler()
+        {
+            DataTable dt = Veritabanı.GetKelimeIstatistik();
+            dgvIstatistik.DataSource = dt;
+
+
+            int toplam = Veritabanı.GetToplamKelimeSayisi();
+            int ogrenilen = Veritabanı.GetOgrenilenKelimeSayisi();
+
+            progressBar.Maximum = toplam;
+            progressBar.Value = Math.Min(ogrenilen, toplam); // Hata almamak için
+            lblSoruDurumu.Text = $"Öğrenilen: {ogrenilen} / {toplam}";
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
