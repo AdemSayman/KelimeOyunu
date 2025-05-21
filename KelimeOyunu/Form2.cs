@@ -371,7 +371,9 @@ namespace KelimeOyunu
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+            Form5 form5 = new Form5();
+            this.Hide();
+            form5.Show();
         }
 
         private void button7_Click(object sender, EventArgs e)

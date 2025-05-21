@@ -18,7 +18,7 @@ namespace KelimeOyunu
 {
     public partial class Form4 : Form
     {
-        
+
         public Form4()
         {
             InitializeComponent();
@@ -46,7 +46,7 @@ namespace KelimeOyunu
 
                 string jsonResponse = await ResimOlustur(prompt);
 
-                
+
                 var base64Array = JsonSerializer.Deserialize<string[]>(jsonResponse);
 
                 if (base64Array != null && base64Array.Length > 0)
@@ -128,6 +128,14 @@ namespace KelimeOyunu
             {
                 return "Resim oluşturulamadı.";
             }
+        }
+
+        private void buttonCikis_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            Form2 frm2 = new Form2(10);
+            frm2.Show();
         }
     }
 }

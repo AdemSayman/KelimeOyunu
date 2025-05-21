@@ -36,6 +36,7 @@
             pictureBox1 = new PictureBox();
             label4 = new Label();
             button1 = new Button();
+            buttonCikis = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -108,12 +109,23 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // buttonCikis
+            // 
+            buttonCikis.Location = new Point(415, 450);
+            buttonCikis.Name = "buttonCikis";
+            buttonCikis.Size = new Size(94, 29);
+            buttonCikis.TabIndex = 8;
+            buttonCikis.Text = "Çıkış";
+            buttonCikis.UseVisualStyleBackColor = true;
+            buttonCikis.Click += buttonCikis_Click;
+            // 
             // Form4
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Ivory;
             ClientSize = new Size(521, 500);
+            Controls.Add(buttonCikis);
             Controls.Add(button1);
             Controls.Add(label4);
             Controls.Add(pictureBox1);
@@ -140,5 +152,6 @@
         private PictureBox pictureBox1;
         private Label label4;
         private Button button1;
+        private Button buttonCikis;
     }
 }
