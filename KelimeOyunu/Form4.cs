@@ -23,10 +23,21 @@ namespace KelimeOyunu
         {
             InitializeComponent();
 
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+            this.Resize += Form4_Resize;
+
             DotNetEnv.Env.Load();
 
             string openRouterApiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
             string hfToken = Environment.GetEnvironmentVariable("HUGGINGFACE_TOKEN");
+        }
+
+        private void Form4_Resize(object sender, EventArgs e)
+        {
+            panelContainer.Left = (this.ClientSize.Width - panelContainer.Width) / 2;
+            panelContainer.Top = (this.ClientSize.Height - panelContainer.Height) / 2;
+
         }
 
         private void Form4_Load(object sender, EventArgs e)

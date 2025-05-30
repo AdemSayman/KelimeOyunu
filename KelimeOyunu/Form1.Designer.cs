@@ -39,6 +39,7 @@
             panel2 = new Panel();
             panel3 = new Panel();
             pictureBox1 = new PictureBox();
+            linkLabel1 = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -106,7 +107,7 @@
             button1.FlatAppearance.MouseOverBackColor = Color.Silver;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            button1.Location = new Point(55, 390);
+            button1.Location = new Point(55, 417);
             button1.Name = "button1";
             button1.Size = new Size(272, 40);
             button1.TabIndex = 5;
@@ -122,7 +123,7 @@
             button2.FlatAppearance.MouseOverBackColor = Color.Silver;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            button2.Location = new Point(55, 441);
+            button2.Location = new Point(55, 468);
             button2.Name = "button2";
             button2.Size = new Size(272, 40);
             button2.TabIndex = 6;
@@ -156,12 +157,24 @@
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
             // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(210, 356);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(117, 20);
+            linkLabel1.TabIndex = 11;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Şifremi Unuttum";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
             // girisYapma
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Ivory;
             ClientSize = new Size(373, 528);
+            Controls.Add(linkLabel1);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
             Controls.Add(panel3);
@@ -192,5 +205,6 @@
         private Panel panel2;
         private Panel panel3;
         private PictureBox pictureBox1;
+        private LinkLabel linkLabel1;
     }
 }

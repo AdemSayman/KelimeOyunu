@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 
@@ -6,7 +6,7 @@ namespace KelimeOyunu
 {
     public partial class girisYapma : Form
     {
-        
+
 
 
         public girisYapma()
@@ -23,7 +23,7 @@ namespace KelimeOyunu
 
             if (kullaniciAd == "" || sifre == "")
             {
-                MessageBox.Show("L�tfen kullan�c� ad� ve �ifreyi girin.");
+                MessageBox.Show("Lütfen kullanıcı adı ve şifreyi girin.");
                 return;
             }
 
@@ -43,14 +43,24 @@ namespace KelimeOyunu
 
                     if (sonuc > 0)
                     {
-                        MessageBox.Show("Giri� ba�ar�l�!");
+                        MessageBox.Show(
+                        "✅ Giriş başarılı!\n\nHoş geldin, iyi oyunlar! 🎮",
+                        "🟢 Başarılı Giriş",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                         );
                         Form2 form2 = new Form2(10);
                         form2.Show();
                         this.Hide();
                     }
                     else
                     {
-                        MessageBox.Show("Hatal� kullan�c� ad� veya �ifre.");
+                        MessageBox.Show(
+                        "🚫 Kullanıcı adı veya şifre yanlış!\n\nLütfen tekrar deneyin.",
+                        "🔴 Giriş Hatası",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                        );
                     }
                 }
             }
@@ -67,7 +77,12 @@ namespace KelimeOyunu
 
             if (kullaniciAd == "" || sifre == "")
             {
-                MessageBox.Show("L�tfen kullan�c� ad� ve �ifreyi girin.");
+                MessageBox.Show(
+                "⚠️ Lütfen hem kullanıcı adını hem şifreyi doldurun!",
+                "Eksik Bilgi",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+                );
                 return;
             }
 
@@ -77,7 +92,7 @@ namespace KelimeOyunu
             {
                 conn.Open();
 
-                // Kullan�c� var m� kontrol�
+                // Kullanıcı var mı kontrolü
                 string kontrolSorgu = "SELECT COUNT(*) FROM kullanicilar WHERE kullaniciAd = @kadi";
                 using (SqlCommand cmdKontrol = new SqlCommand(kontrolSorgu, conn))
                 {
@@ -86,12 +101,17 @@ namespace KelimeOyunu
 
                     if (varMi > 0)
                     {
-                        MessageBox.Show("Bu kullan�c� ad� zaten kay�tl�!");
+                        MessageBox.Show(
+                        "⚠️ Bu kullanıcı adı zaten alınmış!\n\nLütfen farklı bir kullanıcı adı deneyin.",
+                        "🟡 Kayıt Hatası",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                        );
                         return;
                     }
                 }
 
-                // Kullan�c�y� ekle
+                // Kullanıcıyı ekle
                 string ekleSorgu = "INSERT INTO kullanicilar (kullaniciAd, sifre) VALUES (@kadi, @sifre)";
                 using (SqlCommand cmdEkle = new SqlCommand(ekleSorgu, conn))
                 {
@@ -102,11 +122,16 @@ namespace KelimeOyunu
 
                     if (sonuc > 0)
                     {
-                        MessageBox.Show("Kay�t ba�ar�l�!");
+                        MessageBox.Show(
+                        "✅ Kayıt başarılı!\n\nArtık giriş yapabilirsin 👌",
+                        "🟢 Kayıt Tamamlandı",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                        );
                     }
                     else
                     {
-                        MessageBox.Show("Kay�t s�ras�nda bir hata olu�tu.");
+                        MessageBox.Show("Kayıt sırasında bir hata oluştu.");
                     }
                 }
             }
@@ -140,6 +165,66 @@ namespace KelimeOyunu
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string kullaniciAd = textBox1.Text.Trim();
+
+            if (kullaniciAd == "")
+            {
+                MessageBox.Show(
+                    "🔒 Lütfen kullanıcı adını gir!",
+                    "Şifre Sıfırlama",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            string connectionString = "Data Source=DESKTOP-A5JV8RA\\SQLEXPRESS;Initial Catalog=KelimeOyun_db;Integrated Security=True;TrustServerCertificate=True";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string kontrolSorgu = "SELECT COUNT(*) FROM kullanicilar WHERE kullaniciAd = @kadi";
+                using (SqlCommand cmdKontrol = new SqlCommand(kontrolSorgu, conn))
+                {
+                    cmdKontrol.Parameters.AddWithValue("@kadi", kullaniciAd);
+                    int sonuc = (int)cmdKontrol.ExecuteScalar();
+
+                    if (sonuc == 0)
+                    {
+                        MessageBox.Show(
+                            "❌ Bu kullanıcı adı sistemde yok!",
+                            "Şifre Sıfırlama",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                        return;
+                    }
+                }
+
+                // Yeni şifreyi oluştur
+                string yeniSifre = Guid.NewGuid().ToString().Substring(0, 6); // örn: 6 haneli random şifre
+
+                string sifreGuncelle = "UPDATE kullanicilar SET sifre = @yeni WHERE kullaniciAd = @kadi";
+                using (SqlCommand cmdGuncelle = new SqlCommand(sifreGuncelle, conn))
+                {
+                    cmdGuncelle.Parameters.AddWithValue("@yeni", yeniSifre);
+                    cmdGuncelle.Parameters.AddWithValue("@kadi", kullaniciAd);
+
+                    cmdGuncelle.ExecuteNonQuery();
+
+                    MessageBox.Show(
+                        $"🔑 Yeni şifreniz: **{yeniSifre}**\n\nLütfen hemen giriş yapıp şifrenizi değiştirin.",
+                        "Yeni Şifre Oluşturuldu",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                }
+            }
         }
     }
 }

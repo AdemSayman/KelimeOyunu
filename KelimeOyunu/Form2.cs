@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Button = System.Windows.Forms.Button;
 using KelimeOyunu;
+using System.Speech.Synthesis;
 
 
 
@@ -174,6 +175,8 @@ namespace KelimeOyunu
 
             // Label İngilizce kelimeyi yaz
             labelKelime.Text = ingilizceKelime;
+            Oku(ingilizceKelime);
+
 
             // Butonlara şıkları yerleştir
             buttonA.Text = secenekler[0];
@@ -183,6 +186,14 @@ namespace KelimeOyunu
 
         }
 
+        private void Oku(string kelime)
+        {
+            SpeechSynthesizer okuyucu = new SpeechSynthesizer();
+            okuyucu.SelectVoiceByHints(VoiceGender.NotSet, VoiceAge.NotSet, 0, System.Globalization.CultureInfo.GetCultureInfo("en-US"));
+            okuyucu.Rate = 0; // Hız (0 normal)
+            okuyucu.Volume = 100; // Ses seviyesi
+            okuyucu.SpeakAsync(kelime); // Asenkron şekilde okur
+        }
         private void buttonA_Click(object sender, EventArgs e)
         {
 
@@ -206,9 +217,24 @@ namespace KelimeOyunu
         {
             if (mevcutSoruSayaci >= hedefSoruSayisi)
             {
-                string mesaj = $"Test tamamlandı!\nDoğru sayısı: {dogruSayac}\nYanlış sayısı: {yanlisSayac}";
-                MessageBox.Show(mesaj, "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                string mesaj =
+                "🎉 *Test Tamamlandı!*\n\n" +
+                $"✅ Doğru Cevap Sayısı: {dogruSayac}\n" +
+                $"❌ Yanlış Cevap Sayısı: {yanlisSayac}\n\n" +
+                "🔁 Yeni bir test başlatmak ister misin?";
+                Oku(mesaj);
+                DialogResult cevap = MessageBox.Show(mesaj, "🧠 Sonuçlar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (cevap == DialogResult.Yes)
+                {
+                    mevcutSoruSayaci = 0;
+                    dogruSayac = 0;
+                    yanlisSayac = 0;
+                    YeniSoruGetir();
+                }
+                else
+                {
+                    this.Close();
+                }
                 return;
             }
 
@@ -256,6 +282,7 @@ namespace KelimeOyunu
             secenekler = secenekler.OrderBy(x => rnd.Next()).ToList();
 
             labelKelime.Text = ingilizceKelime;
+            Oku(ingilizceKelime);
             buttonA.Text = secenekler[0];
             buttonB.Text = secenekler[1];
             buttonC.Text = secenekler[2];

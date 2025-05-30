@@ -76,6 +76,7 @@ namespace KelimeOyunu
             btnTahmin = new Button();
             buttonCikis = new Button();
             btnTekrar = new Button();
+            panelContainer = new Panel();
             panel1_1.SuspendLayout();
             panel2_1.SuspendLayout();
             panel3_1.SuspendLayout();
@@ -96,23 +97,25 @@ namespace KelimeOyunu
             panel2_5.SuspendLayout();
             panel3_5.SuspendLayout();
             panel4_5.SuspendLayout();
+            panelContainer.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            label1.Location = new Point(349, 72);
+            label1.Font = new Font("Bahnschrift Condensed", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            label1.Location = new Point(374, 36);
             label1.Name = "label1";
-            label1.Size = new Size(87, 31);
+            label1.Size = new Size(95, 41);
             label1.TabIndex = 0;
             label1.Text = "Wordle";
+            label1.Click += label1_Click;
             // 
             // panel1_1
             // 
             panel1_1.BackColor = Color.Gainsboro;
             panel1_1.Controls.Add(lbl1_1);
-            panel1_1.Location = new Point(222, 138);
+            panel1_1.Location = new Point(238, 146);
             panel1_1.Name = "panel1_1";
             panel1_1.Size = new Size(62, 62);
             panel1_1.TabIndex = 1;
@@ -122,15 +125,14 @@ namespace KelimeOyunu
             lbl1_1.AutoSize = true;
             lbl1_1.Location = new Point(3, 23);
             lbl1_1.Name = "lbl1_1";
-            lbl1_1.Size = new Size(12, 20);
+            lbl1_1.Size = new Size(0, 20);
             lbl1_1.TabIndex = 21;
-            lbl1_1.Text = ".";
             // 
             // panel2_1
             // 
             panel2_1.BackColor = Color.Gainsboro;
             panel2_1.Controls.Add(lbl2_1);
-            panel2_1.Location = new Point(222, 206);
+            panel2_1.Location = new Point(238, 214);
             panel2_1.Name = "panel2_1";
             panel2_1.Size = new Size(62, 62);
             panel2_1.TabIndex = 2;
@@ -140,15 +142,14 @@ namespace KelimeOyunu
             lbl2_1.AutoSize = true;
             lbl2_1.Location = new Point(3, 26);
             lbl2_1.Name = "lbl2_1";
-            lbl2_1.Size = new Size(50, 20);
+            lbl2_1.Size = new Size(0, 20);
             lbl2_1.TabIndex = 22;
-            lbl2_1.Text = "label2";
             // 
             // panel3_1
             // 
             panel3_1.BackColor = Color.Gainsboro;
             panel3_1.Controls.Add(lbl3_1);
-            panel3_1.Location = new Point(222, 274);
+            panel3_1.Location = new Point(238, 282);
             panel3_1.Name = "panel3_1";
             panel3_1.Size = new Size(62, 62);
             panel3_1.TabIndex = 3;
@@ -158,15 +159,14 @@ namespace KelimeOyunu
             lbl3_1.AutoSize = true;
             lbl3_1.Location = new Point(3, 21);
             lbl3_1.Name = "lbl3_1";
-            lbl3_1.Size = new Size(50, 20);
+            lbl3_1.Size = new Size(0, 20);
             lbl3_1.TabIndex = 23;
-            lbl3_1.Text = "label2";
             // 
             // panel4_1
             // 
             panel4_1.BackColor = Color.Gainsboro;
             panel4_1.Controls.Add(lbl4_1);
-            panel4_1.Location = new Point(222, 342);
+            panel4_1.Location = new Point(238, 350);
             panel4_1.Name = "panel4_1";
             panel4_1.Size = new Size(62, 62);
             panel4_1.TabIndex = 4;
@@ -176,15 +176,14 @@ namespace KelimeOyunu
             lbl4_1.AutoSize = true;
             lbl4_1.Location = new Point(3, 18);
             lbl4_1.Name = "lbl4_1";
-            lbl4_1.Size = new Size(50, 20);
+            lbl4_1.Size = new Size(0, 20);
             lbl4_1.TabIndex = 24;
-            lbl4_1.Text = "label2";
             // 
             // panel4_2
             // 
             panel4_2.BackColor = Color.Gainsboro;
             panel4_2.Controls.Add(lbl4_2);
-            panel4_2.Location = new Point(290, 342);
+            panel4_2.Location = new Point(306, 350);
             panel4_2.Name = "panel4_2";
             panel4_2.Size = new Size(62, 62);
             panel4_2.TabIndex = 5;
@@ -194,15 +193,14 @@ namespace KelimeOyunu
             lbl4_2.AutoSize = true;
             lbl4_2.Location = new Point(3, 18);
             lbl4_2.Name = "lbl4_2";
-            lbl4_2.Size = new Size(50, 20);
+            lbl4_2.Size = new Size(0, 20);
             lbl4_2.TabIndex = 25;
-            lbl4_2.Text = "label2";
             // 
             // panel3_2
             // 
             panel3_2.BackColor = Color.Gainsboro;
             panel3_2.Controls.Add(lbl3_2);
-            panel3_2.Location = new Point(290, 274);
+            panel3_2.Location = new Point(306, 282);
             panel3_2.Name = "panel3_2";
             panel3_2.Size = new Size(62, 62);
             panel3_2.TabIndex = 6;
@@ -212,15 +210,14 @@ namespace KelimeOyunu
             lbl3_2.AutoSize = true;
             lbl3_2.Location = new Point(3, 21);
             lbl3_2.Name = "lbl3_2";
-            lbl3_2.Size = new Size(50, 20);
+            lbl3_2.Size = new Size(0, 20);
             lbl3_2.TabIndex = 24;
-            lbl3_2.Text = "label2";
             // 
             // panel2_2
             // 
             panel2_2.BackColor = Color.Gainsboro;
             panel2_2.Controls.Add(lbl2_2);
-            panel2_2.Location = new Point(290, 206);
+            panel2_2.Location = new Point(306, 214);
             panel2_2.Name = "panel2_2";
             panel2_2.Size = new Size(62, 62);
             panel2_2.TabIndex = 7;
@@ -230,15 +227,14 @@ namespace KelimeOyunu
             lbl2_2.AutoSize = true;
             lbl2_2.Location = new Point(3, 26);
             lbl2_2.Name = "lbl2_2";
-            lbl2_2.Size = new Size(50, 20);
+            lbl2_2.Size = new Size(0, 20);
             lbl2_2.TabIndex = 23;
-            lbl2_2.Text = "label2";
             // 
             // panel1_2
             // 
             panel1_2.BackColor = Color.Gainsboro;
             panel1_2.Controls.Add(lbl1_2);
-            panel1_2.Location = new Point(290, 138);
+            panel1_2.Location = new Point(306, 146);
             panel1_2.Name = "panel1_2";
             panel1_2.Size = new Size(62, 62);
             panel1_2.TabIndex = 8;
@@ -248,15 +244,14 @@ namespace KelimeOyunu
             lbl1_2.AutoSize = true;
             lbl1_2.Location = new Point(3, 23);
             lbl1_2.Name = "lbl1_2";
-            lbl1_2.Size = new Size(50, 20);
+            lbl1_2.Size = new Size(0, 20);
             lbl1_2.TabIndex = 22;
-            lbl1_2.Text = "label2";
             // 
             // panel1_4
             // 
             panel1_4.BackColor = Color.Gainsboro;
             panel1_4.Controls.Add(lbl1_4);
-            panel1_4.Location = new Point(426, 138);
+            panel1_4.Location = new Point(442, 146);
             panel1_4.Name = "panel1_4";
             panel1_4.Size = new Size(62, 62);
             panel1_4.TabIndex = 16;
@@ -266,15 +261,14 @@ namespace KelimeOyunu
             lbl1_4.AutoSize = true;
             lbl1_4.Location = new Point(4, 23);
             lbl1_4.Name = "lbl1_4";
-            lbl1_4.Size = new Size(50, 20);
+            lbl1_4.Size = new Size(0, 20);
             lbl1_4.TabIndex = 24;
-            lbl1_4.Text = "label4";
             // 
             // panel2_4
             // 
             panel2_4.BackColor = Color.Gainsboro;
             panel2_4.Controls.Add(lbl2_4);
-            panel2_4.Location = new Point(427, 206);
+            panel2_4.Location = new Point(443, 214);
             panel2_4.Name = "panel2_4";
             panel2_4.Size = new Size(62, 62);
             panel2_4.TabIndex = 15;
@@ -284,15 +278,14 @@ namespace KelimeOyunu
             lbl2_4.AutoSize = true;
             lbl2_4.Location = new Point(3, 26);
             lbl2_4.Name = "lbl2_4";
-            lbl2_4.Size = new Size(50, 20);
+            lbl2_4.Size = new Size(0, 20);
             lbl2_4.TabIndex = 26;
-            lbl2_4.Text = "label2";
             // 
             // panel3_4
             // 
             panel3_4.BackColor = Color.Gainsboro;
             panel3_4.Controls.Add(lbl3_4);
-            panel3_4.Location = new Point(426, 274);
+            panel3_4.Location = new Point(442, 282);
             panel3_4.Name = "panel3_4";
             panel3_4.Size = new Size(62, 62);
             panel3_4.TabIndex = 14;
@@ -302,15 +295,14 @@ namespace KelimeOyunu
             lbl3_4.AutoSize = true;
             lbl3_4.Location = new Point(3, 21);
             lbl3_4.Name = "lbl3_4";
-            lbl3_4.Size = new Size(50, 20);
+            lbl3_4.Size = new Size(0, 20);
             lbl3_4.TabIndex = 27;
-            lbl3_4.Text = "label2";
             // 
             // panel4_4
             // 
             panel4_4.BackColor = Color.Gainsboro;
             panel4_4.Controls.Add(lbl4_4);
-            panel4_4.Location = new Point(426, 342);
+            panel4_4.Location = new Point(442, 350);
             panel4_4.Name = "panel4_4";
             panel4_4.Size = new Size(62, 62);
             panel4_4.TabIndex = 13;
@@ -320,15 +312,14 @@ namespace KelimeOyunu
             lbl4_4.AutoSize = true;
             lbl4_4.Location = new Point(4, 18);
             lbl4_4.Name = "lbl4_4";
-            lbl4_4.Size = new Size(50, 20);
+            lbl4_4.Size = new Size(0, 20);
             lbl4_4.TabIndex = 30;
-            lbl4_4.Text = "label7";
             // 
             // panel4_3
             // 
             panel4_3.BackColor = Color.Gainsboro;
             panel4_3.Controls.Add(lbl4_3);
-            panel4_3.Location = new Point(358, 342);
+            panel4_3.Location = new Point(374, 350);
             panel4_3.Name = "panel4_3";
             panel4_3.Size = new Size(62, 62);
             panel4_3.TabIndex = 12;
@@ -338,15 +329,14 @@ namespace KelimeOyunu
             lbl4_3.AutoSize = true;
             lbl4_3.Location = new Point(3, 18);
             lbl4_3.Name = "lbl4_3";
-            lbl4_3.Size = new Size(50, 20);
+            lbl4_3.Size = new Size(0, 20);
             lbl4_3.TabIndex = 26;
-            lbl4_3.Text = "label3";
             // 
             // panel3_3
             // 
             panel3_3.BackColor = Color.Gainsboro;
             panel3_3.Controls.Add(lbl3_3);
-            panel3_3.Location = new Point(358, 274);
+            panel3_3.Location = new Point(374, 282);
             panel3_3.Name = "panel3_3";
             panel3_3.Size = new Size(62, 62);
             panel3_3.TabIndex = 11;
@@ -356,15 +346,14 @@ namespace KelimeOyunu
             lbl3_3.AutoSize = true;
             lbl3_3.Location = new Point(3, 21);
             lbl3_3.Name = "lbl3_3";
-            lbl3_3.Size = new Size(50, 20);
+            lbl3_3.Size = new Size(0, 20);
             lbl3_3.TabIndex = 25;
-            lbl3_3.Text = "label3";
             // 
             // panel2_3
             // 
             panel2_3.BackColor = Color.Gainsboro;
             panel2_3.Controls.Add(lbl2_3);
-            panel2_3.Location = new Point(358, 206);
+            panel2_3.Location = new Point(374, 214);
             panel2_3.Name = "panel2_3";
             panel2_3.Size = new Size(62, 62);
             panel2_3.TabIndex = 10;
@@ -374,15 +363,14 @@ namespace KelimeOyunu
             lbl2_3.AutoSize = true;
             lbl2_3.Location = new Point(3, 26);
             lbl2_3.Name = "lbl2_3";
-            lbl2_3.Size = new Size(50, 20);
+            lbl2_3.Size = new Size(0, 20);
             lbl2_3.TabIndex = 24;
-            lbl2_3.Text = "label3";
             // 
             // panel1_3
             // 
             panel1_3.BackColor = Color.Gainsboro;
             panel1_3.Controls.Add(lbl1_3);
-            panel1_3.Location = new Point(358, 138);
+            panel1_3.Location = new Point(374, 146);
             panel1_3.Name = "panel1_3";
             panel1_3.Size = new Size(62, 62);
             panel1_3.TabIndex = 9;
@@ -392,15 +380,14 @@ namespace KelimeOyunu
             lbl1_3.AutoSize = true;
             lbl1_3.Location = new Point(3, 23);
             lbl1_3.Name = "lbl1_3";
-            lbl1_3.Size = new Size(50, 20);
+            lbl1_3.Size = new Size(0, 20);
             lbl1_3.TabIndex = 23;
-            lbl1_3.Text = "label3";
             // 
             // panel1_5
             // 
             panel1_5.BackColor = Color.Gainsboro;
             panel1_5.Controls.Add(lbl1_5);
-            panel1_5.Location = new Point(494, 138);
+            panel1_5.Location = new Point(510, 146);
             panel1_5.Name = "panel1_5";
             panel1_5.Size = new Size(62, 62);
             panel1_5.TabIndex = 20;
@@ -408,17 +395,16 @@ namespace KelimeOyunu
             // lbl1_5
             // 
             lbl1_5.AutoSize = true;
-            lbl1_5.Location = new Point(9, 23);
+            lbl1_5.Location = new Point(3, 23);
             lbl1_5.Name = "lbl1_5";
-            lbl1_5.Size = new Size(50, 20);
+            lbl1_5.Size = new Size(0, 20);
             lbl1_5.TabIndex = 25;
-            lbl1_5.Text = "label5";
             // 
             // panel2_5
             // 
             panel2_5.BackColor = Color.Gainsboro;
             panel2_5.Controls.Add(lbl2_5);
-            panel2_5.Location = new Point(494, 206);
+            panel2_5.Location = new Point(510, 214);
             panel2_5.Name = "panel2_5";
             panel2_5.Size = new Size(62, 62);
             panel2_5.TabIndex = 19;
@@ -428,15 +414,14 @@ namespace KelimeOyunu
             lbl2_5.AutoSize = true;
             lbl2_5.Location = new Point(1, 26);
             lbl2_5.Name = "lbl2_5";
-            lbl2_5.Size = new Size(58, 20);
+            lbl2_5.Size = new Size(0, 20);
             lbl2_5.TabIndex = 26;
-            lbl2_5.Text = "label11";
             // 
             // panel3_5
             // 
             panel3_5.BackColor = Color.Gainsboro;
             panel3_5.Controls.Add(lbl3_5);
-            panel3_5.Location = new Point(494, 274);
+            panel3_5.Location = new Point(510, 282);
             panel3_5.Name = "panel3_5";
             panel3_5.Size = new Size(62, 62);
             panel3_5.TabIndex = 18;
@@ -446,15 +431,14 @@ namespace KelimeOyunu
             lbl3_5.AutoSize = true;
             lbl3_5.Location = new Point(3, 21);
             lbl3_5.Name = "lbl3_5";
-            lbl3_5.Size = new Size(50, 20);
+            lbl3_5.Size = new Size(0, 20);
             lbl3_5.TabIndex = 29;
-            lbl3_5.Text = "label4";
             // 
             // panel4_5
             // 
             panel4_5.BackColor = Color.Gainsboro;
             panel4_5.Controls.Add(lbl4_5);
-            panel4_5.Location = new Point(494, 342);
+            panel4_5.Location = new Point(510, 350);
             panel4_5.Name = "panel4_5";
             panel4_5.Size = new Size(62, 62);
             panel4_5.TabIndex = 17;
@@ -464,13 +448,12 @@ namespace KelimeOyunu
             lbl4_5.AutoSize = true;
             lbl4_5.Location = new Point(3, 18);
             lbl4_5.Name = "lbl4_5";
-            lbl4_5.Size = new Size(50, 20);
+            lbl4_5.Size = new Size(0, 20);
             lbl4_5.TabIndex = 28;
-            lbl4_5.Text = "label3";
             // 
             // textBoxTahmin
             // 
-            textBoxTahmin.Location = new Point(349, 445);
+            textBoxTahmin.Location = new Point(364, 444);
             textBoxTahmin.Name = "textBoxTahmin";
             textBoxTahmin.Size = new Size(125, 27);
             textBoxTahmin.TabIndex = 21;
@@ -478,7 +461,7 @@ namespace KelimeOyunu
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(272, 448);
+            label18.Location = new Point(287, 447);
             label18.Name = "label18";
             label18.Size = new Size(71, 20);
             label18.TabIndex = 29;
@@ -486,9 +469,9 @@ namespace KelimeOyunu
             // 
             // btnTahmin
             // 
-            btnTahmin.Location = new Point(305, 494);
+            btnTahmin.Location = new Point(320, 485);
             btnTahmin.Name = "btnTahmin";
-            btnTahmin.Size = new Size(94, 29);
+            btnTahmin.Size = new Size(94, 45);
             btnTahmin.TabIndex = 30;
             btnTahmin.Text = "Tahmin Et";
             btnTahmin.UseVisualStyleBackColor = true;
@@ -496,9 +479,9 @@ namespace KelimeOyunu
             // 
             // buttonCikis
             // 
-            buttonCikis.Location = new Point(694, 494);
+            buttonCikis.Location = new Point(702, 485);
             buttonCikis.Name = "buttonCikis";
-            buttonCikis.Size = new Size(94, 29);
+            buttonCikis.Size = new Size(94, 45);
             buttonCikis.TabIndex = 31;
             buttonCikis.Text = "Çıkış";
             buttonCikis.UseVisualStyleBackColor = true;
@@ -506,45 +489,54 @@ namespace KelimeOyunu
             // 
             // btnTekrar
             // 
-            btnTekrar.Location = new Point(405, 494);
+            btnTekrar.Location = new Point(420, 485);
             btnTekrar.Name = "btnTekrar";
-            btnTekrar.Size = new Size(94, 29);
+            btnTekrar.Size = new Size(94, 45);
             btnTekrar.TabIndex = 32;
             btnTekrar.Text = "Tekrar Et";
             btnTekrar.UseVisualStyleBackColor = true;
             btnTekrar.Click += btnTekrar_Click;
             // 
+            // panelContainer
+            // 
+            panelContainer.Controls.Add(panel1_1);
+            panelContainer.Controls.Add(buttonCikis);
+            panelContainer.Controls.Add(btnTekrar);
+            panelContainer.Controls.Add(label1);
+            panelContainer.Controls.Add(panel1_3);
+            panelContainer.Controls.Add(panel2_1);
+            panelContainer.Controls.Add(btnTahmin);
+            panelContainer.Controls.Add(panel2_3);
+            panelContainer.Controls.Add(label18);
+            panelContainer.Controls.Add(panel3_1);
+            panelContainer.Controls.Add(textBoxTahmin);
+            panelContainer.Controls.Add(panel3_3);
+            panelContainer.Controls.Add(panel1_5);
+            panelContainer.Controls.Add(panel4_1);
+            panelContainer.Controls.Add(panel2_5);
+            panelContainer.Controls.Add(panel4_3);
+            panelContainer.Controls.Add(panel1_4);
+            panelContainer.Controls.Add(panel4_2);
+            panelContainer.Controls.Add(panel3_5);
+            panelContainer.Controls.Add(panel4_4);
+            panelContainer.Controls.Add(panel1_2);
+            panelContainer.Controls.Add(panel3_2);
+            panelContainer.Controls.Add(panel4_5);
+            panelContainer.Controls.Add(panel3_4);
+            panelContainer.Controls.Add(panel2_4);
+            panelContainer.Controls.Add(panel2_2);
+            panelContainer.Location = new Point(0, -1);
+            panelContainer.Name = "panelContainer";
+            panelContainer.Size = new Size(799, 550);
+            panelContainer.TabIndex = 33;
+            // 
             // Form5
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Ivory;
             ClientSize = new Size(800, 549);
-            Controls.Add(btnTekrar);
-            Controls.Add(buttonCikis);
-            Controls.Add(btnTahmin);
-            Controls.Add(label18);
-            Controls.Add(textBoxTahmin);
-            Controls.Add(panel1_5);
-            Controls.Add(panel2_5);
-            Controls.Add(panel1_4);
-            Controls.Add(panel3_5);
-            Controls.Add(panel1_2);
-            Controls.Add(panel4_5);
-            Controls.Add(panel2_4);
-            Controls.Add(panel2_2);
-            Controls.Add(panel3_4);
-            Controls.Add(panel3_2);
-            Controls.Add(panel4_4);
-            Controls.Add(panel4_2);
-            Controls.Add(panel4_3);
-            Controls.Add(panel4_1);
-            Controls.Add(panel3_3);
-            Controls.Add(panel3_1);
-            Controls.Add(panel2_3);
-            Controls.Add(panel2_1);
-            Controls.Add(panel1_3);
-            Controls.Add(panel1_1);
-            Controls.Add(label1);
+            Controls.Add(panelContainer);
             Name = "Form5";
             Text = "Form5";
             panel1_1.ResumeLayout(false);
@@ -587,8 +579,9 @@ namespace KelimeOyunu
             panel3_5.PerformLayout();
             panel4_5.ResumeLayout(false);
             panel4_5.PerformLayout();
+            panelContainer.ResumeLayout(false);
+            panelContainer.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -639,6 +632,7 @@ namespace KelimeOyunu
         private Button btnTahmin;
         private Button buttonCikis;
         private Button btnTekrar;
+        private Panel panelContainer;
     }
         
     }

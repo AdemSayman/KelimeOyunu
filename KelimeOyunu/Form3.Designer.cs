@@ -33,6 +33,7 @@ namespace KelimeOyunu
             progressBar = new ProgressBar();
             lblSoruDurumu = new Label();
             btnKapat = new Button();
+            btnDisari = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvIstatistik).BeginInit();
             SuspendLayout();
             // 
@@ -78,11 +79,24 @@ namespace KelimeOyunu
             btnKapat.UseVisualStyleBackColor = true;
             btnKapat.Click += btnKapat_Click;
             // 
+            // btnDisari
+            // 
+            btnDisari.Location = new Point(561, 487);
+            btnDisari.Margin = new Padding(3, 4, 3, 4);
+            btnDisari.Name = "btnDisari";
+            btnDisari.Size = new Size(115, 40);
+            btnDisari.TabIndex = 4;
+            btnDisari.Text = "Dışarı Aktar";
+            btnDisari.UseVisualStyleBackColor = true;
+            btnDisari.Click += btnDisari_Click;
+            // 
             // Form3
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Ivory;
             ClientSize = new Size(782, 548);
+            Controls.Add(btnDisari);
             Controls.Add(btnKapat);
             Controls.Add(lblSoruDurumu);
             Controls.Add(progressBar);
@@ -113,5 +127,6 @@ namespace KelimeOyunu
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label lblSoruDurumu;
         private System.Windows.Forms.Button btnKapat;
+        private Button btnDisari;
     }
 }

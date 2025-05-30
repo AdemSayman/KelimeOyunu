@@ -23,10 +23,22 @@ namespace KelimeOyunu
         {
             InitializeComponent();
             this.Load += Form5_Load;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+            this.Resize += Form5_Resize;
+        }
+
+        private void Form5_Resize(object sender, EventArgs e)
+        {
+            panelContainer.Left = (this.ClientSize.Width - panelContainer.Width) / 2;
+            panelContainer.Top = (this.ClientSize.Height - panelContainer.Height) / 2;
+
+
         }
 
         private void Form5_Load(object sender, EventArgs e)
         {
+
             // Veritabanı bağlantısı (kendine göre ayarla)
             string connStr = "Data Source=DESKTOP-A5JV8RA\\SQLEXPRESS;Initial Catalog=KelimeOyun_db;Integrated Security=True;TrustServerCertificate=True";
 
@@ -194,7 +206,7 @@ namespace KelimeOyunu
                     }
                 }
             }
-            
+
 
             // Yeni kelimeyi rastgele çek
             try
@@ -227,6 +239,11 @@ namespace KelimeOyunu
             }
 
             textBoxTahmin.Focus();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

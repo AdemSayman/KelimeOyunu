@@ -328,7 +328,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Bahnschrift", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            label1.Location = new Point(231, 33);
+            label1.Location = new Point(256, 30);
             label1.Name = "label1";
             label1.Size = new Size(135, 28);
             label1.TabIndex = 0;
@@ -483,40 +483,40 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
-            tabControl1.Location = new Point(237, -31);
+            tabControl1.Location = new Point(219, -28);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(622, 526);
+            tabControl1.Size = new Size(639, 523);
             tabControl1.TabIndex = 8;
             // 
             // tabPage1
             // 
+            tabPage1.BackColor = Color.Cornsilk;
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(614, 493);
+            tabPage1.Size = new Size(631, 490);
             tabPage1.TabIndex = 0;
-            tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
+            tabPage2.BackColor = Color.Cornsilk;
             tabPage2.Controls.Add(groupBox2);
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(614, 493);
             tabPage2.TabIndex = 1;
-            tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
+            tabPage3.BackColor = Color.Cornsilk;
             tabPage3.Controls.Add(groupBoxAyarlar);
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
             tabPage3.Size = new Size(614, 493);
             tabPage3.TabIndex = 2;
-            tabPage3.UseVisualStyleBackColor = true;
             // 
             // Form2
             // 
