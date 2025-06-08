@@ -186,7 +186,7 @@
             Controls.Add(label2);
             Controls.Add(textBox1);
             Name = "girisYapma";
-            Text = "f";
+            Text = "Verbia";
             Load += girisYapma_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

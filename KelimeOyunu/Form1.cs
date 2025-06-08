@@ -14,6 +14,7 @@ namespace KelimeOyunu
 
 
             InitializeComponent();
+            this.Load += girisYapma_Load;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -137,6 +138,7 @@ namespace KelimeOyunu
             }
         }
 
+        
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -159,7 +161,8 @@ namespace KelimeOyunu
 
         private void girisYapma_Load(object sender, EventArgs e)
         {
-
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

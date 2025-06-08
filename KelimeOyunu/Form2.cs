@@ -34,7 +34,7 @@ namespace KelimeOyunu
             hedefSoruSayisi = soruSayisi;
             InitializeComponent();
         }
-      
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -369,6 +369,8 @@ namespace KelimeOyunu
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void ayarlar_Click(object sender, EventArgs e)

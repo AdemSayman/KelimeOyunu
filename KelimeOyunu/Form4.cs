@@ -23,8 +23,7 @@ namespace KelimeOyunu
         {
             InitializeComponent();
 
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
+            
             this.Resize += Form4_Resize;
 
             DotNetEnv.Env.Load();
@@ -42,6 +41,12 @@ namespace KelimeOyunu
 
         private void Form4_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedDialog; 
+            this.StartPosition = FormStartPosition.CenterScreen; 
+            this.Size = new Size(1000, 800); 
+            this.MaximizeBox = false;
+            panelContainer.Left = (this.ClientSize.Width - panelContainer.Width) / 2;
+            panelContainer.Top = (this.ClientSize.Height - panelContainer.Height) / 2;
 
         }
 
@@ -55,19 +60,7 @@ namespace KelimeOyunu
                 string hikaye = await HikayeOlustur(prompt);
                 richTextBox1.Text = hikaye;
 
-                string jsonResponse = await ResimOlustur(prompt);
-
-
-                var base64Array = JsonSerializer.Deserialize<string[]>(jsonResponse);
-
-                if (base64Array != null && base64Array.Length > 0)
-                {
-                    Base64ToPictureBox(base64Array[0], pictureBox1);
-                }
-                else
-                {
-                    MessageBox.Show("Resim oluşturulamadı.");
-                }
+                await ResimOlustur(prompt); 
             }
             catch (Exception ex)
             {
@@ -106,39 +99,37 @@ namespace KelimeOyunu
             using var ms = new System.IO.MemoryStream(bytes);
             pb.Image = Image.FromStream(ms);
         }
-        private async Task<string> ResimOlustur(string prompt)
+        private async Task ResimOlustur(string prompt)
         {
             using var client = new HttpClient();
-            string huggingFaceApiKey = EnvHelper.GetEnv("HUGGINGFACE_TOKEN");
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", huggingFaceApiKey);
+            string deepaiApiKey = Environment.GetEnvironmentVariable("DEEP_AI");
 
-            var requestBody = new
+
+            client.DefaultRequestHeaders.Add("api-key", deepaiApiKey);
+            MessageBox.Show("KEY: " + deepaiApiKey);
+            var body = new Dictionary<string, string>
             {
-                inputs = prompt,
-                options = new { wait_for_model = true }
+                { "text", prompt }
             };
 
-            var content = new StringContent(JsonSerializer.Serialize(requestBody), Encoding.UTF8, "application/json");
+            var content = new FormUrlEncodedContent(body);
 
-            var response = await client.PostAsync("https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-3.5-large", content);
+            var response = await client.PostAsync("https://api.deepai.org/api/text2img", content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("DeepAI isteği başarısız: " + response.StatusCode);
+                return;
+            }
+
             var json = await response.Content.ReadAsStringAsync();
+            using var doc = JsonDocument.Parse(json);
+            var url = doc.RootElement.GetProperty("output_url").GetString();
 
-            var imageUrls = JsonSerializer.Deserialize<string[]>(json);
-
-            if (imageUrls != null && imageUrls.Length > 0)
-            {
-                var imageUrl = imageUrls[0];
-                var imageBytes = await client.GetByteArrayAsync(imageUrl);
-                using var ms = new MemoryStream(imageBytes);
-                var image = Image.FromStream(ms);
-                pictureBox1.Image = image;
-
-                return "Resim oluşturuldu.";
-            }
-            else
-            {
-                return "Resim oluşturulamadı.";
-            }
+            var imageBytes = await client.GetByteArrayAsync(url);
+            using var ms = new MemoryStream(imageBytes);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.Image = Image.FromStream(ms);
         }
 
         private void buttonCikis_Click(object sender, EventArgs e)
